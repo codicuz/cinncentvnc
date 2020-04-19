@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DINAME="localhost/cinncentvnc:latest2"
+DINAME="localhost/cinncentvnc:soft"
 DCNAME="cinncent"
 HOSTNAME="cinncent"
 
