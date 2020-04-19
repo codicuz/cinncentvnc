@@ -1,7 +1,7 @@
 #!/bin/bash
 
 FROM_IMAGE="localhost/cinncentvnc:latest"
-BUILD_IMAGE_NAME="localhost/cinncentvnc:latest2"
+BUILD_IMAGE_NAME="localhost/cinncentvnc:soft"
 JAVA_HOME="/usr/java/latest"
 LD_LIBRARY_PATH="/usr/lib/oracle/12.2/client64/lib:/usr/lib/oracle/12.2/client/lib"
 
