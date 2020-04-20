@@ -33,9 +33,9 @@ fi
  cp -rav "${DEFAULT_HOME}/." "${DEFAULT_HOME}/.vnc" "${HOME}/"
  printf '%s\n' ${VNC_PASSWORD} ${VNC_PASSWORD} n | vncpasswd
  mkdir -vp ${LNK_DESKTOP_DIR}
- cp /opt/lnks/. "${LNK_DESKTOP_DIR}/"
+ cp -v /opt/lnks/* "${LNK_DESKTOP_DIR}/"
  mkdir -vp "${LNK_MENU_DIR}"
- cp /opt/lnks/. "${LNK_MENU_DIR}/"
+ cp -v /opt/lnks/* "${LNK_MENU_DIR}/"
 )
 
 # start VNC server
