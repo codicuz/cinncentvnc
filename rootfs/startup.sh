@@ -19,6 +19,7 @@ elif [ -f ${GOSU} ]
 then
   echo "Creating user with uid ${ID}."
   gosu-amd64 0 bash -c "useradd -u ${ID} -s /usr/bin/bash user"
+  gosu-amd64 0 bash -c "printf '%s\n' ${VNC_PASSWORD} ${VNC_PASSWORD} | passwd user"
 else
   echo "Gosu is not present. Error"
   exit 1

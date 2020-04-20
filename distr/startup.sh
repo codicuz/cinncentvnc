@@ -21,6 +21,7 @@ elif [ -f ${GOSU} ]
 then
   echo "Creating user with uid ${ID}."
   gosu-amd64 0 bash -c "useradd -u ${ID} -s /usr/bin/bash user"
+  gosu-amd64 0 bash -c "printf '%s\n' ${VNC_PASSWORD} ${VNC_PASSWORD} | passwd user"
 else
   echo "Gosu is not present. Error"
   exit 1
@@ -32,9 +33,9 @@ fi
  cp -rav "${DEFAULT_HOME}/." "${DEFAULT_HOME}/.vnc" "${HOME}/"
  printf '%s\n' ${VNC_PASSWORD} ${VNC_PASSWORD} n | vncpasswd
  mkdir -vp ${LNK_DESKTOP_DIR}
- cp /opt/lnks/* ${LNK_DESKTOP_DIR}
- mkdir -vp ${LNK_MENU_DIR}
- cp /opt/lnks/* ${LNK_MENU_DIR}
+ cp /opt/lnks/. "${LNK_DESKTOP_DIR}/"
+ mkdir -vp "${LNK_MENU_DIR}"
+ cp /opt/lnks/. "${LNK_MENU_DIR}/"
 )
 
 # start VNC server

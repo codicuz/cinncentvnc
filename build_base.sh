@@ -1,7 +1,7 @@
 #!/bin/bash
 
 FROM_IMAGE="centos:7"
-BUILD_IMAGE_NAME="localhost/cinncentvnc:latest"
+BUILD_IMAGE_NAME="localhost/cinncentvnc:base"
 
 LANG="ru_RU.UTF-8"
 EXTRA_YUM_PACKAGES='mc nmon iproute vim telnet git'

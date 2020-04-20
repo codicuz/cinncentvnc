@@ -1,6 +1,8 @@
 #!/bin/bash
 
-DINAME="localhost:5000/cinncentvnc:soft"
+DINAME_BASE="localhost:5000/cinncentvnc:base"
+DINAME_DEV="localhost:5000/cinncentvnc:dev"
+DINAME_REL="localhost:5000/cinncentvnc:1.0"
 DCNAME="cinncent"
 HOSTNAME="cinncent"
 
@@ -22,14 +24,32 @@ fi
 
 while :; do
 	case "$1" in
-	-run)
+	-runb)
 	  docker run --name $DCNAME -itd \
 	  -p 5901:5901 \
 	  -e HOME=/tmp \
 	  -v $PWD/volumes/data:/data \
 	  -u 10005000 \
 	  -h $HOSTNAME \
-	  $DINAME
+	  $DINAME_BASE
+	 ;;
+	-rund)
+	  docker run --name $DCNAME -itd \
+	  -p 5901:5901 \
+	  -e HOME=/tmp \
+	  -v $PWD/volumes/data:/data \
+	  -u 10005000 \
+	  -h $HOSTNAME \
+	  $DINAME_DEV
+	 ;;
+	-runr)
+	  docker run --name $DCNAME -itd \
+	  -p 5901:5901 \
+	  -e HOME=/tmp \
+	  -v $PWD/volumes/data:/data \
+	  -u 10005000 \
+	  -h $HOSTNAME \
+	  $DINAME_REL
 	 ;;
 	-rmf)
 	  docker rm -f $DCNAME
