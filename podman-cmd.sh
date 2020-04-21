@@ -1,5 +1,6 @@
 #!/bin/bash
 
+DINAME="localhost:5000/cinncentvnc:1.0"
 DINAME_BASE="localhost/cinncentvnc:base"
 DINAME_DEV="localhost/cinncentvnc:dev"
 DINAME_REL="localhost/cinncentvnc:1.0"
@@ -24,12 +25,21 @@ fi
 
 while :; do
 	case "$1" in
+	-run)
+	  podman run --name $DCNAME -itd \
+	  -p 5901:5901 \
+	  -e HOME=/tmp \
+	  -v $PWD/volumes/data:/data \
+	  -u 10050 \
+	  -h $HOSTNAME \
+	  $DINAME
+	 ;;
 	-runb)
 	  podman run --name $DCNAME -itd \
 	  -p 5901:5901 \
 	  -e HOME=/tmp \
 	  -v $PWD/volumes/data:/data \
-	  -u 10005000 \
+	  -u 10050 \
 	  -h $HOSTNAME \
 	  $DINAME_BASE
 	 ;;
@@ -38,7 +48,7 @@ while :; do
 	  -p 5901:5901 \
 	  -e HOME=/tmp \
 	  -v $PWD/volumes/data:/data \
-	  -u 10005000 \
+	  -u 10050 \
 	  -h $HOSTNAME \
 	  $DINAME_DEV
 	 ;;
@@ -47,7 +57,7 @@ while :; do
 	  -p 5901:5901 \
 	  -e HOME=/tmp \
 	  -v $PWD/volumes/data:/data \
-	  -u 10005000 \
+	  -u 10050 \
 	  -h $HOSTNAME \
 	  $DINAME_REL
 	 ;;

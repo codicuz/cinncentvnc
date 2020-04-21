@@ -29,7 +29,7 @@ while :; do
 	  -p 5901:5901 \
 	  -e HOME=/tmp \
 	  -v $PWD/volumes/data:/data \
-	  -u 10005000 \
+	  -u 10050 \
 	  -h $HOSTNAME \
 	  $DINAME_BASE
 	 ;;
@@ -38,16 +38,16 @@ while :; do
 	  -p 5901:5901 \
 	  -e HOME=/tmp \
 	  -v $PWD/volumes/data:/data \
-	  -u 10005000 \
+	  -u 10050 \
 	  -h $HOSTNAME \
 	  $DINAME_DEV
 	 ;;
 	-runr)
 	  docker run --name $DCNAME -itd \
-	  -p 5901:5901 \
+	  -p 5901-5910:5901-5910 \
 	  -e HOME=/tmp \
 	  -v $PWD/volumes/data:/data \
-	  -u 10005000 \
+	  -u 10050 \
 	  -h $HOSTNAME \
 	  $DINAME_REL
 	 ;;

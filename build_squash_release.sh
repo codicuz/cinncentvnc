@@ -21,7 +21,7 @@ echo "container: $container"
 echo "container mount: $containermnt"
 
 buildah umount $container
-image=$(buildah commit $container $BUILD_IMAGE_NAME)
+image=$(buildah commit --squash $container $BUILD_IMAGE_NAME)
 
 BUILD_END=$(date '+%s')
 BUILD_ELAPSED=`expr $BUILD_END - $BUILD_START`
