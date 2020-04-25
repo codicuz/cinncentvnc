@@ -1,0 +1,27 @@
+#!/bin/bash
+
+function pause() {
+  read -n 1 -s -t 180 -p "$*"
+}
+
+USER_UID=$(awk -F: '$3>m {m=$3} END {print m}' /etc/passwd)
+NEXT_USER_UID=$((++USER_UID))
+USERNAME="user${NEXT_USER_UID}"
+PASSWORD="pwd${NEXT_USER_UID}"
+PASSWORDR="pw${NEXT_USER_UID}r"
+
+gosu-amd64 0 bash -c "useradd -u ${NEXT_USER_UID} -s /usr/bin/bash ${USERNAME}"
+gosu-amd64 0 bash -c "printf '%s\n' ${PASSWORD} ${PASSWORD} | passwd ${USERNAME}"
+gosu-amd64 0 bash -c "mkdir -vp /home/${USERNAME}/Desktop"
+gosu-amd64 0 bash -c "cp -vr /tmp/Desktop/* /home/${USERNAME}/Desktop/"
+gosu-amd64 0 bash -c "mkdir -vp /home/${USERNAME}/.local/share/applications/"
+gosu-amd64 0 bash -c "cp -vr /tmp/.local/share/applications/* /home/${USERNAME}/.local/share/applications/"
+gosu-amd64 0 bash -c "cp -vr /tmp/.vnc /home/${USERNAME}"
+gosu-amd64 0 bash -c "chown -R ${USERNAME}:${USERNAME} /home/${USERNAME}"
+gosu-amd64 0 su - ${USERNAME} -c "printf '%s\n' ${PASSWORD} ${PASSWORD} y ${PASSWORDR} ${PASSWORDR} | vncpasswd"
+gosu-amd64 0 su - ${USERNAME} -c "vncserver"
+
+echo "User: ${USERNAME} with password: ${PASSWORD} created"
+
+pause 'Pess and key to exit...'
+exit 0
