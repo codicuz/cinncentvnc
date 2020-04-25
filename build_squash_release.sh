@@ -1,7 +1,7 @@
 #!/bin/bash
 
 FROM_IMAGE="localhost/cinncentvnc:dev"
-BUILD_IMAGE_NAME="localhost/cinncentvnc:1.0"
+BUILD_IMAGE_NAME="localhost/cinncentvnc:1.1"
 
 buildah rm -a
 

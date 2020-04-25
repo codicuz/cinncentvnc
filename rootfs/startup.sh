@@ -4,6 +4,7 @@ ID=$(id -u)
 GOSU="/usr/local/bin/gosu-amd64"
 DEFAULT_HOME="/opt/default/home"
 VNC_PASSWORD="${VNC_PASSWORD:-resu2020}"
+VNC_PASSWORDR="${VNC_PASSWORDR:-res2020r}"
 VNC_GEOMETRY="${VNC_GEOMETRY:-1280x720}"
 
 if [ -z "${HOME}" ] || [ "${HOME}" = "/" ]
@@ -29,7 +30,7 @@ fi
  echo "Info: Bootstrapping ${HOME} directory from ${DEFAULT_HOME}"
  mkdir -vp "${HOME}/.vnc"
  cp -rav "${DEFAULT_HOME}/." "${DEFAULT_HOME}/.vnc" "${HOME}/"
- printf '%s\n' ${VNC_PASSWORD} ${VNC_PASSWORD} n | vncpasswd
+ printf '%s\n' ${VNC_PASSWORD} ${VNC_PASSWORD} y ${VNC_PASSWORDR} ${VNC_PASSWORDR} | vncpasswd
 )
 
 # start VNC server

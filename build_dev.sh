@@ -3,8 +3,9 @@
 FROM_IMAGE="localhost/cinncentvnc:base"
 BUILD_IMAGE_NAME="localhost/cinncentvnc:dev"
 
-JAVA_HOME=/usr/java/latest
-JRE_HOME=${JAVA_HOME}/jre
+JAVA_HOME="/usr/java/latest"
+JRE_HOME="${JAVA_HOME}/jre"
+TNS_ADMIN="/opt/oracle"
 
 BASHRC_FILES="conf/user"
 LNKS_PATH="/opt/lnks"
@@ -25,7 +26,7 @@ echo "begin build...."
 echo "container: $container"
 echo "container mount: $containermnt"
 
-buildah config --env JAVA_HOME=${JAVA_HOME} --env JRE_HOME=${JRE_HOME} $container
+buildah config --env JAVA_HOME=${JAVA_HOME} --env JRE_HOME=${JRE_HOME} --env TNS_ADMIN=${TNS_ADMIN} $container
 
 buildah copy $container distr ${EXTRA_RPM_PATH}
 buildah copy $container lnks ${LNKS_PATH}

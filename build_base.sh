@@ -23,6 +23,7 @@ buildah config --env LANG=$LANG $container
 buildah run $container -- localedef -i ru_RU -f UTF-8 ru_RU.UTF-8
 buildah run $container -- localedef -i ru_RU -f CP1251 ru_RU.CP1251
 
+buildah run $container -- yum -y update
 buildah run $container -- yum -y install epel-release
 buildah run $container -- yum -y install tigervnc-server ${EXTRA_YUM_PACKAGES}
 buildah run $container -- yum -y groups install "Cinnamon"
