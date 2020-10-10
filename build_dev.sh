@@ -11,9 +11,9 @@ BASHRC_FILES="conf/user"
 LNKS_PATH="/opt/lnks"
 PROFILE_D_CONF_FILE="conf/custom.sh"
 LD_LIBRARY_CONF_FILE="conf/custom.conf"
-EXTRA_RPM='zip unzip libaio java'
+EXTRA_RPM='zip unzip libaio java ansible*'
 EXTRA_RPM_PATH="/opt/distr"
-EXTRA_RPM_LOCAL='/opt/distr/codium-1.44.2-1587206677.el7.x86_64.rpm /opt/distr/jdk-8u251-linux-x64.rpm /opt/distr/sqldeveloper-19.4.0.354.1759-19.4.0-354.1759.noarch.rpm /opt/distr/oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm /opt/distr/oracle-instantclient12.2-sqlplus-12.2.0.1.0-1.x86_64.rpm /opt/distr/oracle-instantclient12.2-tools-12.2.0.1.0-1.x86_64.rpm'
+EXTRA_RPM_LOCAL='/opt/distr/code-1.50.0-1602051243.el7.x86_64.rpm /opt/distr/jdk-8u261-linux-x64.rpm /opt/distr/oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm /opt/distr/oracle-instantclient12.2-sqlplus-12.2.0.1.0-1.x86_64.rpm /opt/distr/oracle-instantclient12.2-tools-12.2.0.1.0-1.x86_64.rpm /opt/distr/sqldeveloper-20.2.0.175.1842-20.2.0-175.1842.noarch.rpm'
 
 buildah rm -a
 

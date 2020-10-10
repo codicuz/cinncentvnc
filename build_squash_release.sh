@@ -1,7 +1,7 @@
 #!/bin/bash
 
 FROM_IMAGE="localhost/cinncentvnc:dev"
-BUILD_IMAGE_NAME="localhost/cinncentvnc:1.1"
+BUILD_IMAGE_NAME="localhost/cinncentvnc:1.2"
 
 buildah rm -a
 
@@ -15,6 +15,7 @@ echo "container: $container"
 echo "container mount: $containermnt"
 
 buildah run $container -- sed -i -e 's/#!\/bin\/sh -x/#!\/bin\/sh/' /startup.sh
+buildah run $container -- systemd-machine-id-setup
 
 echo "end build..."
 echo "container: $container"
